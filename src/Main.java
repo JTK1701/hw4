@@ -3,36 +3,30 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         //1 задача
-        System.out.println("В каком году ты родился?");
+        System.out.println("Сколько тебе лет?");
         Scanner year = new Scanner(System.in);
         int age = year.nextInt();
-        int yourAge = 2024 - ++age;
-        short monthNow = 4;
-        System.out.println("А в каком месяце?");
-        Scanner month = new Scanner(System.in);
-        int monthOfBirthday = month.nextInt();
-        if (monthOfBirthday <= monthNow ) { yourAge++;
-        }
-        if (yourAge >= 18){System.out.println("Поздравляю, ты совершеннолетний.");} else{
-            System.out.println("Извини, придется подождать еще вот столько лет - " + (18 - yourAge));}
+
+        if (age >= 18){System.out.println("Поздравляю, ты совершеннолетний.");} else{
+            System.out.println("Извини, придется подождать еще вот столько лет - " + (18 - age));}
+
         //2 задача
         System.out.println("  ");
         System.out.println("Сколько сейчас градусов на улице?");
         Scanner t = new Scanner(System.in);
         int weather = t.nextInt();
-        if ( weather >= 5 && yourAge >= 18 ) {System.out.println("Все в порядке, шапка не нужна, там тепло а ты уже взрослый.");}
-        else if ( weather >= 5 && yourAge < 18 ) {System.out.println("Там, конечно тепло, но ты еще мелкий, без шапки ходить!");}
+        if ( weather >= 5 ) {System.out.println("Все в порядке, шапка не нужна, там тепло а ты уже взрослый.");}
         else {System.out.println("Там холодно. Надень, пожалуйста, шапку.");}
+
         //3 задача
         System.out.println(" ");
         System.out.println("Что там на спидометре?");
         Scanner speed = new Scanner(System.in);
         int speedNow = speed.nextInt();
-        if (speedNow <= 60 && yourAge >= 18) {System.out.println("Так держать, не гоняй и все будет отлично");
-        }
-        else if (yourAge < 18 ) {System.out.println("Эй! Тебе вообще за руль нельзя!! Немедленно припаркуйся, надень шапку и выйди из машины.");
+        if (speedNow <= 60 ) {System.out.println("Так держать, не гоняй и все будет отлично");
         }
         else System.out.println("Не, бро, так не пойдет, с тебя штраф.");
+
         //4 задача
         System.out.println(" ");
         System.out.println("Сколько тебе лет?");
@@ -46,6 +40,7 @@ public class Main {
         }
         else if ( age4 > 24) {System.out.println("У меня для тебя плохие новости. Тебе пора ходить на работу.");
         }
+
         //5 задачча
         System.out.println(" ");
         System.out.println("Сколько лет ребенку? ");
@@ -60,6 +55,7 @@ public class Main {
         else if (babyAge > 14){
             System.out.println("Ребенку можно кататься на аттракционах без сопровождения взрослого");
         }
+
         //6 задача
         System.out.println(" ");
         int wagon = 102;
@@ -72,14 +68,15 @@ public class Main {
         seatFree = seat - peopleInWagon;
         places = wagon - peopleInWagon;
         if (peopleInWagon < seat) {
-            System.out.println("В вагоне осталось " + seatFree + " свободных сидений и 42 стоячих места.");
+            System.out.println("В вагоне осталось свободных сидений - " + seatFree + "  и 42 стоячих места.");
         }
-        else if (peopleInWagon > seat && peopleInWagon < wagon ){
+        else if (peopleInWagon >= seat && peopleInWagon < wagon ){
             System.out.println("В вагоне осталось " + places + " стоячих мест.");
         }
-        else if ( peopleInWagon > wagon ) {
+        else if ( peopleInWagon >= wagon ) {
             System.out.println("Мест нет.");
         }
+
         //7 задача
         int one;
         int two;
@@ -88,13 +85,20 @@ public class Main {
         int ave = 0;
         int min = 0;
         Scanner g = new Scanner(System.in);
-        System.out.println("Пожалуйста, введите три числа. ");
+        System.out.println("Пожалуйста, введите три разных числа. ");
         one =  g.nextInt();
         two = g.nextInt();
         three = g.nextInt();
-        if ( one > two && one > three ){
+        if (one == three || one == two) {
+            System.out.println("вы ввели как минимум два одинаковых числа, программа будет работать некорректно");
+            System.exit(0);
+        } else if (two == three) {
+            System.out.println("вы ввели как минимум два одинаковых числа, программа будет работать некорректно");
+            System.exit(0);
+        }
+        if (one > two && one > three) {
             max = one;
-        } else if ( two > one && two > three) {
+        } else if (two > one && two > three) {
             max = two;
         } else {
             max = three;
@@ -113,7 +117,6 @@ public class Main {
         } else {
             ave = three;
         }
-
         System.out.println("Max = " + max + " Average = " + ave + " Min = " + min);
     }
 }
